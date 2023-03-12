@@ -4,7 +4,7 @@ pipeline {
         stage('Run shell') {
             when{
                 expression {
-                    ${GIT_BRANCH}=='origin/test'
+                    env.GIT_BRANCH =='origin/test'
                 }
             
             }
