@@ -4,7 +4,7 @@ pipeline {
         stage('Run shell') {
             steps {
                 sh '''
-                  echo $BUILD_NUMBER
+                  docker pull httpd
                   echo $JOB_NAME
                   echo $NODE_NAME
                 '''
