@@ -1,7 +1,7 @@
 pipeline {
     agent any
     stages {
-        stage('Run shells') {
+        stage('Run shell') {
             when{
                 expression {
                     env.GIT_BRANCH =='origin/test'
