@@ -5,7 +5,7 @@ pipeline {
             steps {
                 sh '''
                   docker build -t my-website:latest .
-                  docker run -d --name my-website-app -p 8080:80 my-website
+                  docker run -d --name my-website-app -p 8081:80 my-website
                   echo $BUILD_NUMBER
                 '''
             }
