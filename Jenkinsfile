@@ -10,9 +10,13 @@ pipeline {
             }
             steps {
                 sh '''
-                  docker build -t my-website:latest .
                   docker rm -f $(docker ps -a -q) || true
-                  docker run -d --name my-website-app-${BUILD_NUMBER} -p 8081:80 my-website
+                  aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 864231724929.dkr.ecr.us-east-1.amazonaws.com
+                  docker build -t my-website:latest .
+                  docker tag my-website:latest 864231724929.dkr.ecr.us-east-1.amazonaws.com/h-projects:latest
+                  docker push 864231724929.dkr.ecr.us-east-1.amazonaws.com/my-website:latest
+                  
+         
                   echo $BUILD_NUMBER
                 '''
             }
